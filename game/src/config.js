@@ -4,73 +4,89 @@
  */
 
 export const PALETTE = {
-  // Deep celestial backgrounds
-  space: '#0b1026',
-  spaceDeep: '#050814',
-  nebulaIndigo: 'rgba(28, 38, 92, 0.22)',
-  nebulaPlum: 'rgba(72, 24, 96, 0.18)',
-  nebulaCyan: 'rgba(32, 94, 110, 0.15)',
-  starWarm: '#fff9e6',
-  starMint: '#a6f7ea',
-  starDim: '#3a4468',
+  // Luminous celestial backgrounds (elevated from deep pitch toward rich mid-violet-blue)
+  space: '#181e42',
+  spaceDeep: '#121633',
+  spaceGradTop: '#1e2658',
+  spaceGradMid: '#161c42',
+  spaceGradBot: '#191f48',
 
-  // Ember comet & trail
+  // Vibrant drifting cosmic nebulae
+  nebulaIndigo: 'rgba(68, 82, 185, 0.40)',
+  nebulaPlum: 'rgba(145, 52, 175, 0.34)',
+  nebulaCyan: 'rgba(42, 155, 185, 0.30)',
+  nebulaViolet: 'rgba(105, 65, 195, 0.36)',
+
+  // Starfield
+  starWarm: '#fffde8',
+  starMint: '#b8fff2',
+  starDim: '#6576ad',
+
+  // Radiant comet Ember & sweeping trail
   cometCore: '#ffffff',
   cometMint: '#7ff2e0',
-  cometHalo: 'rgba(127, 242, 224, 0.45)',
-  cometGlowOuter: 'rgba(127, 242, 224, 0.12)',
-  trailStart: 'rgba(127, 242, 224, 0.95)',
+  cometMintBright: '#c8fff7',
+  cometHalo: 'rgba(127, 242, 224, 0.65)',
+  cometGlowOuter: 'rgba(127, 242, 224, 0.22)',
+  trailCore: '#ffffff',
+  trailMint: '#7ff2e0',
+  trailOuter: 'rgba(127, 242, 224, 0.38)',
+  trailStart: 'rgba(200, 255, 247, 0.98)',
   trailEnd: 'rgba(127, 242, 224, 0.0)',
 
-  // Gravitational wells
+  // Gravitational wells with wide warm amber halos
   wellCore: '#ffffff',
-  wellAmber: '#ffb35c',
-  wellAmberLight: '#ffcf8a',
-  wellRing: 'rgba(255, 179, 92, 0.7)',
-  wellDistort: 'rgba(255, 179, 92, 0.22)',
-  wellWave: 'rgba(255, 210, 140, 0.15)',
-  wellSingularity: 'rgba(255, 245, 220, 0.9)',
+  wellAmber: '#ff9d3b',
+  wellAmberLight: '#ffd48f',
+  wellRing: 'rgba(255, 170, 65, 0.85)',
+  wellDistort: 'rgba(255, 185, 75, 0.35)',
+  wellWave: 'rgba(255, 215, 130, 0.28)',
+  wellSingularity: 'rgba(255, 245, 220, 0.95)',
+  wellHaloInner: 'rgba(255, 200, 100, 0.45)',
+  wellHaloOuter: 'rgba(255, 140, 30, 0.0)',
 
-  // Cosmic star gates
+  // Large unmistakable cosmic star gates
   gateWhite: '#ffffff',
-  gateMagenta: '#ff5fa2',
-  gateMagentaLight: '#ff8fb8',
-  gateRing: 'rgba(255, 95, 162, 0.85)',
-  gateInnerPulse: 'rgba(255, 95, 162, 0.3)',
-  gateGlow: 'rgba(255, 95, 162, 0.18)',
-  gateInactive: 'rgba(110, 70, 95, 0.55)',
-  gateBeam: 'rgba(255, 143, 184, 0.35)',
+  gateMagenta: '#ff4d94',
+  gateMagentaLight: '#ffa8cb',
+  gateRing: 'rgba(255, 77, 148, 0.92)',
+  gateInnerPulse: 'rgba(255, 110, 175, 0.45)',
+  gateGlow: 'rgba(255, 80, 150, 0.32)',
+  gateInactive: 'rgba(165, 115, 155, 0.80)',
+  gateInactiveGlow: 'rgba(140, 95, 130, 0.25)',
+  gateBeam: 'rgba(255, 168, 203, 0.45)',
 
-  // Slate asteroids & rim light
-  asteroidBody: '#5a6480',
-  asteroidDark: '#363d50',
-  asteroidShadow: '#222735',
-  asteroidRimLight: '#94a2c7',
-  asteroidHighlight: '#cbd5e8',
+  // Slate asteroids with crisp directional rim lighting
+  asteroidBody: '#4e5874',
+  asteroidDark: '#32394d',
+  asteroidShadow: '#202534',
+  asteroidRimLight: '#e4efff',
+  asteroidHighlight: '#ffffff',
 
   // Stardust motes
   stardustCore: '#ffffff',
   stardustAmber: '#ffe875',
-  stardustHalo: 'rgba(255, 232, 117, 0.55)',
+  stardustHalo: 'rgba(255, 232, 117, 0.65)',
 
   // Repulsor & shockwave
   repulsorRing: '#7ff2e0',
-  repulsorGlow: 'rgba(127, 242, 224, 0.3)',
+  repulsorGlow: 'rgba(127, 242, 224, 0.45)',
 
-  // HUD interface & text
-  hudText: '#f2e6cf',
-  hudTextDim: 'rgba(242, 230, 207, 0.65)',
-  hudTextMuted: 'rgba(242, 230, 207, 0.38)',
-  hudShadow: 'rgba(5, 8, 20, 0.85)',
-  hudPanelBg: 'rgba(9, 14, 34, 0.72)',
-  hudPanelBorder: 'rgba(127, 242, 224, 0.25)',
+  // HUD interface & high-contrast panels
+  hudText: '#ffffff',
+  hudTextDim: '#dbe4f5',
+  hudTextMuted: '#a5b4d4',
+  hudShadow: 'rgba(0, 0, 0, 0.92)',
+  hudPanelBg: 'rgba(12, 17, 42, 0.82)',
+  hudPanelBorder: 'rgba(127, 242, 224, 0.38)',
+  hudPanelBorderGold: 'rgba(255, 200, 87, 0.45)',
   hudLifePip: '#7ff2e0',
-  hudLifeLost: 'rgba(90, 100, 128, 0.4)',
-  hudChargeBar: '#ffb35c',
-  hudChargeEmpty: 'rgba(70, 50, 30, 0.45)',
+  hudLifeLost: 'rgba(95, 110, 145, 0.45)',
+  hudChargeBar: '#ffaa3b',
+  hudChargeEmpty: 'rgba(65, 48, 32, 0.65)',
 
   // Status indicators
-  alertRed: '#ff4d6d',
+  alertRed: '#ff3b60',
   accentCyan: '#7ff2e0',
   accentGold: '#ffc857',
 };
@@ -86,14 +102,14 @@ export const TUNING = {
   maxLives: 3,
 
   // Comet dynamics
-  cometRadius: 8.5,
+  cometRadius: 9.0,
   cometInitialSpeed: 170,
   cometMinSpeed: 70,
   cometMaxSpeed: 420,
   cometDrag: 0.9985,
   cometInvulnerableTime: 2.2, // seconds after respawn
-  cometTrailSampleRate: 0.016,
-  cometTrailMaxLength: 55,
+  cometTrailSampleRate: 0.014,
+  cometTrailMaxLength: 85, // Long sweeping bright trail
 
   // Gravity well placement & physics
   wellMaxCharges: 5,
@@ -103,17 +119,17 @@ export const TUNING = {
   wellMaxHoldSeconds: 1.1,
   wellBaseMass: 26000,
   wellMaxMass: 78000,
-  wellBaseRadius: 38,
+  wellBaseRadius: 40,
   wellPullRadius: 360,
   gravitySofteningSq: 1400, // epsilon^2 to prevent infinite singularity spikes
 
-  // Star gates
-  gateRadius: 34,
+  // Star gates (enlarged for instant recognition)
+  gateRadius: 42,
   gateProximityDistance: 190,
   gateBaseScore: 350,
 
   // Stardust motes
-  stardustRadius: 7,
+  stardustRadius: 8,
   stardustCountPerSector: 9,
   stardustScore: 80,
   stardustChargeBonus: 1.0,
@@ -134,6 +150,10 @@ export const TUNING = {
   // Camera & juice
   cameraTraumaDecay: 1.8,
   maxScreenShakeOffset: 16,
+
+  // Feel & polish timers
+  firstRunHintDuration: 6.5,
+  sectorBannerDuration: 2.5,
 };
 
 export const SECTOR_CONFIGS = [

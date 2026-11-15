@@ -12,18 +12,18 @@ export function createParticleSystem() {
   };
 }
 
-export function emitSparks(system, x, y, count = 18, color = PALETTE.cometMint, maxSpeed = 160, baseSize = 3) {
+export function emitSparks(system, x, y, count = 22, color = PALETTE.cometMint, maxSpeed = 180, baseSize = 3.5) {
   for (let i = 0; i < count; i++) {
     const angle = Math.random() * Math.PI * 2;
-    const speed = (0.2 + Math.random() * 0.8) * maxSpeed;
+    const speed = (0.25 + Math.random() * 0.75) * maxSpeed;
     system.particles.push({
       type: 'spark',
       x,
       y,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      life: 0.35 + Math.random() * 0.45,
-      maxLife: 0.8,
+      life: 0.4 + Math.random() * 0.5,
+      maxLife: 0.9,
       size: baseSize * (0.6 + Math.random() * 0.8),
       color,
       decay: 0.96,
@@ -31,10 +31,10 @@ export function emitSparks(system, x, y, count = 18, color = PALETTE.cometMint, 
   }
 }
 
-export function emitDebris(system, x, y, count = 24) {
+export function emitDebris(system, x, y, count = 28) {
   for (let i = 0; i < count; i++) {
     const angle = Math.random() * Math.PI * 2;
-    const speed = 40 + Math.random() * 220;
+    const speed = 40 + Math.random() * 240;
     const isSlate = Math.random() < 0.65;
     system.particles.push({
       type: 'debris',
@@ -42,9 +42,9 @@ export function emitDebris(system, x, y, count = 24) {
       y,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      life: 0.6 + Math.random() * 0.9,
-      maxLife: 1.5,
-      size: 2 + Math.random() * 4.5,
+      life: 0.7 + Math.random() * 1.0,
+      maxLife: 1.7,
+      size: 2.5 + Math.random() * 5.0,
       color: isSlate ? PALETTE.asteroidBody : PALETTE.cometMint,
       decay: 0.94,
       rot: Math.random() * Math.PI * 2,
@@ -53,30 +53,33 @@ export function emitDebris(system, x, y, count = 24) {
   }
 }
 
-export function emitShockwave(system, x, y, maxRadius = 140, color = PALETTE.gateMagenta, lineWidth = 4) {
+export function emitShockwave(system, x, y, maxRadius = 160, color = PALETTE.gateMagenta, lineWidth = 5) {
   system.shockwaves.push({
     x,
     y,
-    radius: 8,
+    radius: 10,
     maxRadius,
-    life: 0.6,
-    maxLife: 0.6,
+    life: 0.65,
+    maxLife: 0.65,
     color,
     lineWidth,
   });
 }
 
 export function emitGateFlash(system, x, y) {
-  emitShockwave(system, x, y, 160, PALETTE.gateMagenta, 6);
-  emitShockwave(system, x, y, 90, PALETTE.gateMagentaLight, 3);
-  emitSparks(system, x, y, 32, PALETTE.gateMagentaLight, 240, 3.8);
-  emitSparks(system, x, y, 16, PALETTE.cometMint, 140, 2.5);
+  emitShockwave(system, x, y, 200, PALETTE.gateMagenta, 7);
+  emitShockwave(system, x, y, 120, PALETTE.gateWhite, 4);
+  emitShockwave(system, x, y, 60, PALETTE.gateMagentaLight, 3);
+  emitSparks(system, x, y, 42, PALETTE.gateMagentaLight, 260, 4.2);
+  emitSparks(system, x, y, 24, PALETTE.gateWhite, 200, 3.2);
+  emitSparks(system, x, y, 20, PALETTE.cometMint, 160, 2.8);
 }
 
 export function emitWellPlacement(system, x, y, holdRatio = 0) {
-  const maxR = 90 + holdRatio * 90;
-  emitShockwave(system, x, y, maxR, PALETTE.wellAmber, 3.5);
-  emitSparks(system, x, y, 20, PALETTE.wellAmberLight, 130 + holdRatio * 90, 2.6);
+  const maxR = 110 + holdRatio * 110;
+  emitShockwave(system, x, y, maxR, PALETTE.wellAmber, 4.5);
+  emitShockwave(system, x, y, maxR * 0.55, PALETTE.wellAmberLight, 2.5);
+  emitSparks(system, x, y, 26, PALETTE.wellAmberLight, 150 + holdRatio * 100, 3.0);
 }
 
 export function updateParticleSystem(system, dt) {
@@ -106,7 +109,7 @@ export function updateParticleSystem(system, dt) {
       continue;
     }
     const progress = 1 - s.life / s.maxLife;
-    s.radius = 8 + progress * (s.maxRadius - 8);
+    s.radius = 10 + progress * (s.maxRadius - 10);
   }
 }
 
@@ -119,7 +122,7 @@ export function drawParticleSystem(ctx, system) {
     ctx.beginPath();
     ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
     ctx.strokeStyle = s.color;
-    ctx.globalAlpha = alpha * 0.85;
+    ctx.globalAlpha = alpha * 0.9;
     ctx.lineWidth = s.lineWidth * (0.3 + 0.7 * alpha);
     ctx.stroke();
     ctx.restore();
@@ -147,23 +150,27 @@ export function drawParticleSystem(ctx, system) {
 }
 
 /**
- * Creates procedural layered nebula clouds for background depth.
+ * Creates procedural layered nebula clouds for background depth and vibrancy.
  */
 export function createNebulaClouds(rng, width, height) {
   const clouds = [];
-  const cloudCount = 6;
+  const cloudCount = 8;
   const colors = [
     PALETTE.nebulaIndigo,
     PALETTE.nebulaPlum,
     PALETTE.nebulaCyan,
+    PALETTE.nebulaViolet,
     PALETTE.nebulaIndigo,
+    PALETTE.nebulaPlum,
+    PALETTE.nebulaCyan,
+    PALETTE.nebulaViolet,
   ];
 
   for (let i = 0; i < cloudCount; i++) {
     clouds.push({
-      x: rng.range(width * 0.1, width * 0.9),
-      y: rng.range(height * 0.1, height * 0.9),
-      radius: rng.range(260, 480),
+      x: rng.range(width * 0.08, width * 0.92),
+      y: rng.range(height * 0.08, height * 0.92),
+      radius: rng.range(320, 560),
       color: colors[i % colors.length],
       driftSpeed: rng.range(0.015, 0.04),
       driftAngle: rng.angle(),
@@ -179,19 +186,20 @@ export function drawNebula(ctx, clouds, time = 0) {
   ctx.save();
   for (let i = 0; i < clouds.length; i++) {
     const c = clouds[i];
-    const offsetX = Math.cos(time * c.driftSpeed + c.driftAngle) * 20;
-    const offsetY = Math.sin(time * c.driftSpeed + c.driftAngle) * 20;
+    const offsetX = Math.cos(time * c.driftSpeed + c.driftAngle) * 25;
+    const offsetY = Math.sin(time * c.driftSpeed + c.driftAngle) * 25;
 
     const grad = ctx.createRadialGradient(
       c.x + offsetX,
       c.y + offsetY,
-      c.radius * 0.1,
+      c.radius * 0.05,
       c.x + offsetX,
       c.y + offsetY,
       c.radius
     );
     grad.addColorStop(0, c.color);
-    grad.addColorStop(1, 'rgba(11, 16, 38, 0)');
+    grad.addColorStop(0.55, c.color.replace(/[\d\.]+\)$/, (m) => `${(parseFloat(m) * 0.5).toFixed(3)})`));
+    grad.addColorStop(1, 'rgba(24, 30, 66, 0)');
 
     ctx.fillStyle = grad;
     ctx.beginPath();
