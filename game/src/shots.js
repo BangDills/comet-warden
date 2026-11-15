@@ -127,6 +127,7 @@ export function stageScreenshot(ctx, shotName, seedNumber = 42) {
     state.elapsedSeconds = 374; // 6m 14s
     state.sectorNumber = 7;
     state.sectorName = 'Oblivion Gate';
+    state.sectorsSealed = 7;
     state.sector = generateSector(7, rng);
     state.comet = createComet(640, 360, 0, 0);
 

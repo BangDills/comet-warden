@@ -567,10 +567,8 @@ export function renderScene(ctx, state, time, camera, stars, nebulaClouds) {
     drawHUD(ctx, state);
     drawPauseScreen(ctx);
   } else if (state.screen === 'game_over') {
-    drawHUD(ctx, state);
     drawGameOverScreen(ctx, state, time);
   } else if (state.screen === 'victory') {
-    drawHUD(ctx, state);
     drawVictoryScreen(ctx, state, time);
   }
 }
